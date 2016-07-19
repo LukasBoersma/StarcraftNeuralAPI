@@ -130,9 +130,10 @@ void ExampleAIModule::onFrame()
        try
        {
           auto eyeValues = Eye::getViewInputs(u);
-          std::cout << "Sending " << eyeValues.size() << " input values";
-          auto output = aiManager.getBrainOutputs(eyeValues);
-          std::cout << "Received " << output.size() << " response values";
+          auto outputs = aiManager.getBrainOutputs(eyeValues);
+          auto x = u->getPosition().x + outputs[0];
+          auto y = u->getPosition().x + outputs[1];
+          u->move(BWAPI::Position(x, y));
        }
        catch (std::exception& e)
        {
