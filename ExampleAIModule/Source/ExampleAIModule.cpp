@@ -13,7 +13,7 @@ void ExampleAIModule::onStart()
    }
    catch (std::exception& e)
    {
-      Broodwar->sendText("Socket to Brain could not be opened:");
+      Broodwar->sendText("Connection to Brain could not be opened:");
       Broodwar->sendText(e.what());
    }
   // Hello World!
@@ -62,6 +62,16 @@ void ExampleAIModule::onStart()
 
 void ExampleAIModule::onEnd(bool isWinner)
 {
+   try
+   {
+      aiManager.close();
+   }
+   catch (std::exception& e)
+   {
+      Broodwar->sendText("Connection to Brain could not be closed:");
+      Broodwar->sendText(e.what());
+   }
+   
   // Called when the game ends
   if ( isWinner )
   {

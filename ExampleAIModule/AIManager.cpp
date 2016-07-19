@@ -68,6 +68,17 @@ void AIManager::openSocket()
    isConnected = true;
 }
 
+void AIManager::close()
+{
+   // shutdown the send half of the connection since no more data will be sent
+   int ok = shutdown(apiSocket, SD_SEND);
+   if (ok == SOCKET_ERROR) {
+      throw std::exception("Socket shutdown failed");
+   }
+   closesocket(apiSocket);
+   WSACleanup();
+}
+
 std::vector<double> AIManager::getBrainOutputs(std::vector<double> inputs)
 {
    int dataLen = inputs.size() * sizeof(double);

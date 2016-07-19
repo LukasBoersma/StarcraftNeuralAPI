@@ -66,5 +66,10 @@ std::vector<double> Eye::getViewInputs(const BWAPI::Unit& unit)
        }
     }
 
-    return std::vector<double>();
+
+    auto pos = unit->getPosition();
+    inputs.push_back(pos.x);
+    inputs.push_back(pos.y);
+
+    return inputs;
 }

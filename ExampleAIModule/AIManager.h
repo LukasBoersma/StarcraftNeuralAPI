@@ -19,6 +19,8 @@ public:
    SOCKET apiSocket;
    bool isConnected = false;
 
+   void close();
+
    void openSocket();
 
    std::vector<double> getBrainOutputs(std::vector<double> data);
