@@ -133,7 +133,7 @@ void ExampleAIModule::onFrame()
           auto outputs = aiManager.getBrainOutputs(eyeValues);
           auto x = u->getPosition().x + outputs[0];
           auto y = u->getPosition().x + outputs[1];
-          u->move(BWAPI::Position(x, y));
+          u->move(BWAPI::Position((int)x, (int)y));
        }
        catch (std::exception& e)
        {
