@@ -30,5 +30,5 @@ public:
 private:
    AIManager aiManager;
    long lastUpdate = -9999999;
-   long updateFrequency = 10000;
+   long updateFrequency = 100;
 };
